@@ -78,7 +78,7 @@ object FunSets {
       else if (s(a)) iter(a+1, union(u, singletonSet(f(a))))
       else iter(a+1, u)
     }
-    iter(-bound, (x:Int) => true)
+    iter(-bound, (x:Int) => false)
   }
   
   /**

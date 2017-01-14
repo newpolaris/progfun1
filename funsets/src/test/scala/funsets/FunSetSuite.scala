@@ -110,5 +110,17 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  var mapInit = Array(1,3,4,5,7,1000)
+  test("map: " + mapInit.mkString("{", ",", "}")) {
+    var s = mapInit.map(singletonSet).reduce(union(_, _))
+    var r:Set = map(s, _ * 2)
+    var expect = "{2,6,8,10,14}" 
+    var result = FunSets.toString(r)
+    assert(result == expect)
+  }
 
+  test("forall & map: doubling numbers"){
+    var s = (-5 to 5).map(singletonSet).reduce(union(_,_))
+    assert(forall(map(s, _ * 2), _ % 2 == 0), true)
+  }
 }
